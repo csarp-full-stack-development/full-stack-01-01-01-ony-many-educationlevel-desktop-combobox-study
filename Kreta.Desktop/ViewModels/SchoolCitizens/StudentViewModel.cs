@@ -15,6 +15,7 @@ namespace Kreta.Desktop.ViewModels.SchoolCitizens
     public partial class StudentViewModel : BaseViewModel
     {        
         private readonly IStudentService? _studentService;
+        private readonly IEducationLevelService? _educationLevelService;
 
         [ObservableProperty]
         private ObservableCollection<Student> _students = new();
@@ -30,10 +31,13 @@ namespace Kreta.Desktop.ViewModels.SchoolCitizens
             _selectedStudent = new Student();
         }
 
-        public StudentViewModel(IStudentService? studentService)
+        public StudentViewModel(IStudentService? studentService, 
+                                IEducationLevelService? educationLevelService
+                               )
         {
             _selectedStudent = new Student();
             _studentService = studentService;
+            _educationLevelService = educationLevelService;
         }
 
         public async override Task InitializeAsync()
