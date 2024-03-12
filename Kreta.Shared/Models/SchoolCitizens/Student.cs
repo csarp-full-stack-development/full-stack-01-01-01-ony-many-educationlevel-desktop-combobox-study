@@ -47,7 +47,7 @@
         public override string ToString()
         {
             string woman = IsWoman ? "nő" : "férfi";
-            return $"{HungarianName} {woman} ({SchoolYear}.{SchoolClass}) - ({String.Format("{0:yyyy.MM.dd.}", BirthDay)})";
+            return $"{HungarianName} {woman} {EducationLevel} ({SchoolYear}.{SchoolClass}) - ({String.Format("{0:yyyy.MM.dd.}", BirthDay)})";
         }
     }
 }
