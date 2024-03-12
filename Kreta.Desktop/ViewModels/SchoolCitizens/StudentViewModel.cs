@@ -7,6 +7,8 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Kreta.Shared.Models.SchoolCitizens;
 using Kreta.Shared.Models;
+using System.Windows.Documents;
+using System.Collections.Generic;
 
 namespace Kreta.Desktop.ViewModels.SchoolCitizens
 {
@@ -77,7 +79,12 @@ namespace Kreta.Desktop.ViewModels.SchoolCitizens
         }
 
         private async Task UpdateView()
-        {            
+        {
+            if (_studentService is not null)
+            {
+                List<Student> students = await _studentService.SelectAllAsync();
+                Students = new ObservableCollection<Student>(students);
+            }
         }
     }
 }
