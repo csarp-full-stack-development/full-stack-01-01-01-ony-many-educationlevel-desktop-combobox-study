@@ -89,6 +89,11 @@ namespace Kreta.Desktop.ViewModels.SchoolCitizens
                 List<Student> students = await _studentService.SelectAllAsync();
                 Students = new ObservableCollection<Student>(students);
             }
+            if (_educationLevelService is not null)
+            {
+                List<EducationLevel> educationLevels = await _educationLevelService.SelectAllAsync();
+                EducationLevels = new ObservableCollection<EducationLevel>(educationLevels);
+            }
         }
     }
 }
