@@ -55,6 +55,27 @@ namespace Kreta.Desktop.ViewModels.Administration
             }
         }
 
+        [RelayCommand]
+        private async Task DoSaveEducationLevel(EducationLevel educationLevel)
+        {
+            if (_educationLevelService is not null)
+            {
+                ControllerResponse response = new();
+                if (educationLevel.HasId)
+                {
+                    response = await _educationLevelService.UpdateAsync(educationLevel);   
+                }
+                else
+                {
+                    response=await _educationLevelService.InsertAsync(educationLevel);
+                }
+                if (response.IsSuccess) 
+                {
+                    await UpdateView();
+                }
+            }
+        }
+
         private async Task UpdateView()
         {
             if (_educationLevelService is not null)
