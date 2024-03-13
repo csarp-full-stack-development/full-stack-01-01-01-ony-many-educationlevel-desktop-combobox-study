@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Kreta.Desktop.ViewModels.Base;
 using Kreta.HttpService.Services;
 using Kreta.Shared.Models;
@@ -32,6 +33,12 @@ namespace Kreta.Desktop.ViewModels.Administration
         {
             await UpdateView();
             await base.InitializeAsync();
+        }
+
+        [RelayCommand]
+        private void DoNewEducationLevel()
+        {
+            SelectedEducationLevel = new();
         }
 
         private async Task UpdateView()
