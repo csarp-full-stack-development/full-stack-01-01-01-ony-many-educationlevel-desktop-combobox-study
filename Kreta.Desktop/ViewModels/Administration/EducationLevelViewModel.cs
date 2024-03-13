@@ -28,6 +28,12 @@ namespace Kreta.Desktop.ViewModels.Administration
             _educationLevelService = educationLevelService;
         }
 
+        public async override Task InitializeAsync()
+        {
+            await UpdateView();
+            await base.InitializeAsync();
+        }
+
         private async Task UpdateView()
         {
             if (_educationLevelService is not null)
